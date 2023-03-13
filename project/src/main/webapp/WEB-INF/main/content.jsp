@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,15 +42,6 @@
 						<a href="#" onclick="traceClick('mainTopBanner', 257);"> <img
 							class="img"
 							src="https://img.taling.me/Content/Uploads/Images/42ad12cc026dede4fdcdcfac70429d39e89f3a25.png"
-							alt="">
-					</a>
-					</li>
-					<li class="swiper-slide swiper-slide-duplicate-active"
-						data-swiper-slide-index="0"
-						style="width: 880px; opacity: 1; transform: translate3d(-880px, 0px, 0px); transition-duration: 0ms;">
-						<a href="#" onclick="traceClick('mainTopBanner', 263);"> <img
-							class="img"
-							src="https://img.taling.me/Content/Uploads/Images/6cc03f984146702e93d24606dd9cbf83dbc8ed10.png"
 							alt="">
 					</a>
 					</li>
@@ -355,60 +346,60 @@
 				<div class="wrapper">
 					<!-- 로그인 전 -->
 					<c:if test="${sessionScope.id==null }">
-					<div class="login_box">
-						<h2 class="blind">회원 로그인 영역</h2>
-						<p class="login_msg">
-							로그인 하시고 하루의<br>다양한 튜터를 만나보세요.
-						</p>
-						<a class="link_login" href="../member/loginpage.do">하루 로그인</a>
-						<div class="box_btns">
-							<a class="find_id" href="#">아이디 찾기</a> <a class="find_pw"
-								href="#">비밀번호 찾기</a> <a class="link_join"
-								href="../member/loginpage.do">회원가입</a>
+						<div class="login_box">
+							<h2 class="blind">회원 로그인 영역</h2>
+							<p class="login_msg">
+								로그인 하시고 하루의<br>다양한 튜터를 만나보세요.
+							</p>
+							<a class="link_login" href="../member/loginpage.do">하루 로그인</a>
+							<div class="box_btns">
+								<a class="find_id" href="#">아이디 찾기</a> <a class="find_pw"
+									href="#">비밀번호 찾기</a> <a class="link_join"
+									href="../member/loginpage.do">회원가입</a>
+							</div>
 						</div>
-					</div>
 					</c:if>
 					<!-- //로그인 전 -->
 					<!-- 로그인 후 -->
 					<c:if test="${sessionScope.id!=null }">
-					<div class="login_box status_logon">
-						<div class="area_info_top">
-							<a class="my_profile" href="#"> <img
-								class="img_profile"
-								src="${sessionScope.image }"
-								onerror="profileImgError(this,);" alt="프로필 이미지">
-							</a>
-							<div class="logon_msg">
-								<b><em class="level"></em>${sessionScope.name }님</b> <span>반가워요</span>
-<!-- 								<button class="btn_logout" type="button" id="btn-menu-logout">로그아웃</button> -->
-									<button class="btn_logout" type="button" id="btn-menu-logout" onclick="location.href='../member/logout.do'">로그아웃</button>
-							</div>
-							<button class="btn_livechat " type="button" onclick="qPop(0)">
-								<span class="blind">메시지💬</span>
-							</button>
-						</div>
-						<div class="area_info_bottom">
-							<div class="btn_coupon" id="coupon">
-								<button type="button" class="coupon">
-									쿠폰 <em>0</em>
-								</button>
-								<button type="button" class="point">
-									포인트 <em>0P</em>
+						<div class="login_box status_logon">
+							<div class="area_info_top">
+								<a class="my_profile" href="#"> <img class="img_profile"
+									src="${sessionScope.image }" onerror="profileImgError(this,);"
+									alt="프로필 이미지">
+								</a>
+								<div class="logon_msg">
+									<b><em class="level"></em>${sessionScope.name }님</b> <span>반가워요</span>
+									<!-- 								<button class="btn_logout" type="button" id="btn-menu-logout">로그아웃</button> -->
+									<button class="btn_logout" type="button" id="btn-menu-logout"
+										onclick="location.href='../member/logout.do'">로그아웃</button>
+								</div>
+								<button class="btn_livechat " type="button" onclick="qPop(0)">
+									<span class="blind">메시지💬</span>
 								</button>
 							</div>
-							<!-- pub -->
-							<button class="tutor_mode" type="button" data-tutormode="">
-								<b>튜터모드</b> <span class="toggle"><small></small></span>
-							</button>
+							<div class="area_info_bottom">
+								<div class="btn_coupon" id="coupon">
+									<button type="button" class="coupon">
+										쿠폰 <em>0</em>
+									</button>
+									<button type="button" class="point">
+										포인트 <em>0P</em>
+									</button>
+								</div>
+								<!-- pub -->
+								<button class="tutor_mode" type="button" data-tutormode="">
+									<b>튜터모드</b> <span class="toggle"><small></small></span>
+								</button>
+							</div>
+							<ul class="lnb">
+								<li claas="chat_tutee"><a onclick="qPop(0)"
+									style="cursor: pointer;">메시지💬</a></li>
+								<li class=""><a href="#">수업신청서</a></li>
+								<li><a href="#">수강목록</a></li>
+								<li class="link_wish"><a href="#">찜</a></li>
+							</ul>
 						</div>
-						<ul class="lnb">
-							<li claas="chat_tutee"><a onclick="qPop(0)"
-								style="cursor: pointer;">메시지💬</a></li>
-							<li class=""><a href="#">수업신청서</a></li>
-							<li><a href="#">수강목록</a></li>
-							<li class="link_wish"><a href="#">찜</a></li>
-						</ul>
-					</div>
 					</c:if>
 					<!-- // 로그인 후 -->
 					<!-- hot_keyword -->
