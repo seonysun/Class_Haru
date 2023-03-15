@@ -246,3 +246,7 @@ public class ClassRestController {
 	}
 
 }
+
+
+}
+
