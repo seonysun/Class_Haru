@@ -25,4 +25,9 @@ public class MypageController {
 	public String mypage_question() {
 		return "mypage/main";
 	}
+	
+	@GetMapping("mypage/profileUpdate.do")
+	public String mypage_profileUpdate() {
+		return "mypage/profileUpdate";
+	}
 }

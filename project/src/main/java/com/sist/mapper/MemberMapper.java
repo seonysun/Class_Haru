@@ -16,6 +16,7 @@ public interface MemberMapper {
 	public MemberVO memberLogin(String id);
 	
 	//회원가입
-//	@Insert("INSERT INTO ch_member_2_3(id,pwd,name,nickname) VALUES("
-//			+ "")
+	@Insert("INSERT INTO ch_member_2_3(id,pwd,name) VALUES("
+			+ "#{id},#{pwd},#{name})")
+	public void memberInsert(MemberVO vo);
 }
