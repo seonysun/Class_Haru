@@ -40,7 +40,6 @@ public class ClassController {
 		  //map.put("detail_cateno", detail_cateno);
 		 // map.put("start", map)
 		  //List<ClassDetailVO> list=service.classListData(map);
-		  List<CategoryVO> cList=service.classCateData();
 		 
 		
 		model.addAttribute("cateno",cateno );

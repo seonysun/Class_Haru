@@ -52,15 +52,8 @@ public class ClassRestController {
 		}
 		return arr.toJSONString();
 	}
+	
 	@GetMapping(value="class/class_list_vue.do",produces="text/plain;charset=utf-8")
-
-	public String class_list_vue(int cateno,int detail_cateno)
-	{
-		Map map=new HashMap();
-		map.put("cateno", cateno);
-		map.put("detail_cateno", detail_cateno);
-		List<ClassDetailVO> list=service.classListData(map);
-  }
 	public String class_list_vue(int cateno,int detail_cateno,String page)
 	{
 		if(page==null)
@@ -244,9 +237,6 @@ public class ClassRestController {
 		
 		return obj.toJSONString();
 	}
-
-}
-
 
 }
 
