@@ -10,17 +10,18 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <style type="text/css">
 .login_box .link_login {
-  display: block;
-  padding: 12px 0;
-  border-radius: 6px;
-  text-align: center;
-  color: #ffffff;
-  font-size: 15px;
-  line-height: 24px;
-  background-color: #45c5c5;
+	display: block;
+	padding: 12px 0;
+	border-radius: 6px;
+	text-align: center;
+	color: #ffffff;
+	font-size: 15px;
+	line-height: 24px;
+	background-color: #45c5c5;
 }
+
 .login_box .link_login:hover {
-  background-color: #45c5c5;
+	background-color: #45c5c5;
 }
 </style>
 </head>
@@ -150,31 +151,122 @@
 				<!-- talents_area -->
 				<div class="talents_area">
 					<!-- curationSections -->
-					<div class="talent_box">
-						<h2 class="main_title">세상을 바꿀 ChatGPT, 이젠 배워야 할 때!</h2>
+					<div class="talent_box pop_dance">
+						<h2 class="main_title">Stay in the middle~ 나도 배워볼까?</h2>
 						<div
 							class="talent_list swiper-container swiper_this_week swiper-container-initialized swiper-container-horizontal swiper-container-free-mode"
 							data-number="1">
 							<ul class="swiper-wrapper">
-								<li class="swiper-slide swiper-slide-active"
-									style="width: 210px; margin-right: 15px;"><a
-									href="/Talent/Detail/10034">
-										<div class="thumb lazyloaded"
-											data-bg="//img.taling.me/Content/Uploads/Cover/2d31833949053aea44a76e6abd3efd397f60e770.png"
-											style="background-image: url(&quot;//img.taling.me/Content/Uploads/Cover/2d31833949053aea44a76e6abd3efd397f60e770.png&quot;);">
+								<li class="swiper-slide swiper-active"
+									style="width: 210px; margin-right: 15px;" v-for="pvo in pop_dance">
+									<a :href="'../class/class_detail.do?cno='+pvo.cno">
+<!-- 									div class="thumb lazyloaded"> :style="{'background-image':'url('{{cvo.image}}')}">       -->
+<!--            <img v-if="cvo.image=='noimg.jpg'" :src="'../images/'+cvo.image"> -->
+<!--            <img v-else :src="cvo.image"> -->
+<!--             </div>       -->		
+										<div class="thumb lazyloaded">
+										  <img v-if="pvo.image=='noimg.jpg'" :src="'../images/'+pvo.image">
+										  <img v-else :src="pvo.image">
 										</div>
 										<div class="card_cnt">
-											<h3 class="talent_title">하루만에 정복하는 ChatGPT 영어공부 마스터 클래스</h3>
+											<h3 class="talent_title">{{pvo.title}}</h3>
 											<p class="cate_tutor">
-												<span class="name">로이 튜터</span>
+												<span class="name">{{pvo.tutor_info_nickname}}</span>
 											</p>
 											<p class="price_info">
-												<span class="price">28,000원</span>
+												<span class="price">{{pvo.perprice}}</span>
 											</p>
 											<div class="talent_info">
-												<span class="user">54</span><span class="reward_badge"
-													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">리뷰
-													2건</span>
+												<span class="user">{{pvo.jjim_count}}</span><span class="reward_badge"
+													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">
+											</div>
+										</div>
+								</a>
+									<button type="button" class="btn_wish "
+										onclick="updateWish(this,10034);"></button></li>
+							</ul>
+							<button type="button"
+								class="btn_swiper swiper-button-prev swiper-button-disabled"
+								tabindex="0" role="button" aria-label="Previous slide"
+								aria-disabled="true"></button>
+							<button type="button" class="btn_swiper swiper-button-next"
+								tabindex="0" role="button" aria-label="Next slide"
+								aria-disabled="false"></button>
+							<span class="swiper-notification" aria-live="assertive"
+								aria-atomic="true"></span>
+						</div>
+					</div>
+					<!-- // curationSections -->
+					
+					<!-- curationSections -->
+					<div class="talent_box pop_get_job">
+						<h2 class="main_title">취업하고싶어요... 자소서는 어떻게 써야하죠?</h2>
+						<div
+							class="talent_list swiper-container swiper_this_week swiper-container-initialized swiper-container-horizontal swiper-container-free-mode"
+							data-number="1">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide swiper-active"
+									style="width: 210px; margin-right: 15px;" v-for="pvo in pop_get_job">
+									<a :href="'../class/class_detail.do?cno='+pvo.cno">
+										<div class="thumb lazyloaded">
+										  <img v-if="pvo.image=='noimg.jpg'" :src="'../images/'+pvo.image">
+										  <img v-else :src="pvo.image">
+										</div>
+										<div class="card_cnt">
+											<h3 class="talent_title">{{pvo.title}}</h3>
+											<p class="cate_tutor">
+												<span class="name">{{pvo.tutor_info_nickname}}</span>
+											</p>
+											<p class="price_info">
+												<span class="price">{{pvo.perprice}}</span>
+											</p>
+											<div class="talent_info">
+												<span class="user">{{pvo.jjim_count}}</span><span class="reward_badge"
+													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">
+											</div>
+										</div>
+								</a>
+									<button type="button" class="btn_wish "
+										onclick="updateWish(this,10034);"></button></li>
+							</ul>
+							<button type="button"
+								class="btn_swiper swiper-button-prev swiper-button-disabled"
+								tabindex="0" role="button" aria-label="Previous slide"
+								aria-disabled="true"></button>
+							<button type="button" class="btn_swiper swiper-button-next"
+								tabindex="0" role="button" aria-label="Next slide"
+								aria-disabled="false"></button>
+							<span class="swiper-notification" aria-live="assertive"
+								aria-atomic="true"></span>
+						</div>
+					</div>
+					<!-- // curationSections -->
+					
+					<!-- curationSections -->
+					<div class="talent_box pop_fit">
+						<h2 class="main_title">나이가 들었나 몸이 예전같지 않을땐~</h2>
+						<div
+							class="talent_list swiper-container swiper_this_week swiper-container-initialized swiper-container-horizontal swiper-container-free-mode"
+							data-number="1">
+							<ul class="swiper-wrapper">
+								<li class="swiper-slide swiper-active"
+									style="width: 210px; margin-right: 15px;" v-for="pvo in pop_fit">
+									<a :href="'../class/class_detail.do?cno='+pvo.cno">
+										<div class="thumb lazyloaded">
+										  <img v-if="pvo.image=='noimg.jpg'" :src="'../images/'+pvo.image">
+										  <img v-else :src="pvo.image">
+										</div>
+										<div class="card_cnt">
+											<h3 class="talent_title">{{pvo.title}}</h3>
+											<p class="cate_tutor">
+												<span class="name">{{pvo.tutor_info_nickname}}</span>
+											</p>
+											<p class="price_info">
+												<span class="price">{{pvo.perprice}}</span>
+											</p>
+											<div class="talent_info">
+												<span class="user">{{pvo.jjim_count}}</span><span class="reward_badge"
+													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">
 											</div>
 										</div>
 								</a>
@@ -194,87 +286,6 @@
 					</div>
 					<!-- // curationSections -->
 
-					<!-- content_Banner -->
-					<div class="talent_box banner_area">
-						<h2 class="main_title">요즘 사람들은 뭐 배운대?</h2>
-						<div
-							class="swiper-container style_contents swiper-container-initialized swiper-container-horizontal swiper-container-free-mode">
-							<ul class="swiper-wrapper"
-								style="transform: translate3d(0px, 0px, 0px);">
-								<li class="swiper-slide"
-									style="width: 322px; margin-right: 16px;"><a
-									href="https://post.naver.com/viewer/postView.naver?volumeNo=35373530&amp;memberNo=33796646"
-									class="content_item"> <img
-										src="https://img.taling.me/Content/Uploads/Images/c7f57e6a6354124f0f401e87cf5661115485b37f.jpg"
-										alt="" style="height: 181px; margin: auto auto;">
-										<div class="content_text">
-											<span class="hashtag"># 일잘러의노트</span>
-											<p class="title">알아두면 쓸데있는 PPT '숨겨진 기능'</p>
-										</div>
-								</a></li>
-							</ul>
-							<button type="button"
-								class="btn_swiper swiper-button-prev swiper-button-disabled"
-								tabindex="0" role="button" aria-label="Previous slide"
-								aria-disabled="true"></button>
-							<button type="button" class="btn_swiper swiper-button-next"
-								tabindex="0" role="button" aria-label="Next slide"
-								aria-disabled="false"></button>
-							<span class="swiper-notification" aria-live="assertive"
-								aria-atomic="true"></span>
-						</div>
-					</div>
-					<!-- // content_Banner -->
-
-
-					<!-- mini_banner -->
-					<!-- // mini_banner -->
-
-					<!-- curationSections -->
-
-					<div class="talent_box">
-						<h2 class="main_title">평점 4.9 이상 명품클래스✔</h2>
-						<div
-							class="talent_list swiper-container swiper_this_week swiper-container-initialized swiper-container-horizontal swiper-container-free-mode"
-							data-number="1">
-							<ul class="swiper-wrapper">
-								<li class="swiper-slide"
-									style="width: 210px; margin-right: 15px;"><a
-									href="/Talent/Detail/16353">
-										<div class="thumb lazyloaded"
-											data-bg="//img.taling.me/Content/Uploads/Cover/c1aec094d23ca5a1419063640072cba3f58f5a1b.jpg"
-											style="background-image: url(&quot;//img.taling.me/Content/Uploads/Cover/c1aec094d23ca5a1419063640072cba3f58f5a1b.jpg&quot;);">
-										</div>
-										<div class="card_cnt">
-											<h3 class="talent_title">하루2021년 최고매출,카톡으로 만나는 일대일영어튜터</h3>
-											<p class="cate_tutor">
-												<span class="name">방인영 튜터</span>
-											</p>
-											<p class="price_info">
-												<span class="price">120,000원</span>
-											</p>
-											<div class="talent_info">
-												<span class="user">4174</span><span class="reward_badge"
-													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">리뷰
-													100건+</span>
-											</div>
-										</div>
-								</a>
-									<button type="button" class="btn_wish "
-										onclick="updateWish(this,16353);"></button></li>
-							</ul>
-							<button type="button"
-								class="btn_swiper swiper-button-prev swiper-button-disabled"
-								tabindex="0" role="button" aria-label="Previous slide"
-								aria-disabled="true"></button>
-							<button type="button" class="btn_swiper swiper-button-next"
-								tabindex="0" role="button" aria-label="Next slide"
-								aria-disabled="false"></button>
-							<span class="swiper-notification" aria-live="assertive"
-								aria-atomic="true"></span>
-						</div>
-					</div>
-					<!-- // curationSections -->
 
 					<!-- line_banner -->
 					<div class="talent_box banner_area">
@@ -307,36 +318,35 @@
 					<!-- // line_banner -->
 
 					<!-- curationSections -->
-					<div class="talent_box">
+					<div class="talent_box pop_fortune">
 						<h2 class="main_title">2023년, 올해 운세는? ✍</h2>
 						<div
 							class="talent_list swiper-container swiper_this_week swiper-container-initialized swiper-container-horizontal swiper-container-free-mode"
 							data-number="1">
 							<ul class="swiper-wrapper">
-								<li class="swiper-slide"
-									style="width: 210px; margin-right: 15px;"><a
-									href="/Talent/Detail/23650">
-										<div class="thumb lazyload "
-											data-bg="//img.taling.me/Content/Uploads/Cover/06e56accfa2b51a685211c63e2962405514d6665.jpg">
+								<li class="swiper-slide swiper-active"
+									style="width: 210px; margin-right: 15px;" v-for="pvo in pop_fortune">
+									<a :href="'../class/class_detail.do?cno='+pvo.cno">
+										<div class="thumb lazyloaded">
+										  <img v-if="pvo.image=='noimg.jpg'" :src="'../images/'+pvo.image">
+										  <img v-else :src="pvo.image">
 										</div>
 										<div class="card_cnt">
-											<h3 class="talent_title">[파일 전송] 2023 사주&amp;자미두수로 보는
-												타고난 운</h3>
+											<h3 class="talent_title">{{pvo.title}}</h3>
 											<p class="cate_tutor">
-												<span class="name">치타 튜터</span>
+												<span class="name">{{pvo.tutor_info_nickname}}</span>
 											</p>
 											<p class="price_info">
-												<span class="price">39,000원</span>
+												<span class="price">{{pvo.perprice}}</span>
 											</p>
 											<div class="talent_info">
-												<span class="user">1442</span><span class="reward_badge"
-													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">리뷰
-													100건+</span>
+												<span class="user">{{pvo.jjim_count}}</span><span class="reward_badge"
+													style="background-image: url('//front-img.taling.me/Content/app3/img/icon/icClasscardReview@2x.png')">
 											</div>
 										</div>
 								</a>
 									<button type="button" class="btn_wish "
-										onclick="updateWish(this,23650);"></button></li>
+										onclick="updateWish(this,10034);"></button></li>
 							</ul>
 							<button type="button"
 								class="btn_swiper swiper-button-prev swiper-button-disabled"
@@ -380,8 +390,8 @@
 						<div class="login_box status_logon">
 							<div class="area_info_top">
 								<a class="my_profile" href="#"> <img class="img_profile"
-									src="${sessionScope.mvo.image }" onerror="profileImgError(this,);"
-									alt="프로필 이미지">
+									src="${sessionScope.mvo.image }"
+									onerror="profileImgError(this,);" alt="프로필 이미지">
 								</a>
 								<div class="logon_msg">
 									<b><em class="level"></em>${sessionScope.mvo.name }님</b> <span>반가워요</span>
@@ -457,85 +467,30 @@
 					<!-- ad_vod -->
 					<div class="ad_vod">
 						<div class="ad_vod_title">
-							<h2 class="main_title">실시간 인기 클래스</h2>
+							<h2 class="main_title">최고 인기 클래스</h2>
 							<!--<a href="/vod/list" class="btn_link">브오디홈</a>-->
 						</div>
 						<ul>
-							<li><a href="/Talent/Detail/7624">
+							<li v-for="pvo in now_pop_list">
+							<a href="/Talent/Detail/7624">
 									<div class="thumb lazyloaded"
-										data-bg="//img.taling.me/Content/Uploads/Images/b79d4954df95b35271d7116540336f22ab0e7d38.png"
-										style="background-image: url(&quot;//img.taling.me/Content/Uploads/Images/b79d4954df95b35271d7116540336f22ab0e7d38.png&quot;);">
+										v-bind:style="{'background-image': 'url('+pvo.image+')'}">
 									</div>
 									<div class="text_box">
-										<h3 class="talent_title">실무에 가장 많이 쓰이는 PPT 디자인</h3>
+										<h3 class="talent_title">{{pvo.title}}</h3>
 										<div class="talent_info">
-											<span class="user"><em>6,493명</em>이 찜했습니다!</span> <span
-												class="average">4.9(347)</span>
+											<span class="user"><em>{{pvo.jjim_count}}명</em>이
+												찜했습니다!</span> <span class="average">{{pvo.tutor_grade_total}}</span>
 										</div>
 									</div>
 							</a> <!-- <p class="earlybird">얼리버드 마감임박!</p> --></li>
-							<li><a href="/Talent/Detail/37128">
-									<div class="thumb lazyloaded"
-										data-bg="//img.taling.me/Content/Uploads/Images/b07c81dbc82e5b5bb7ee58383e6e9a7f59e9117d.png"
-										style="background-image: url(&quot;//img.taling.me/Content/Uploads/Images/b07c81dbc82e5b5bb7ee58383e6e9a7f59e9117d.png&quot;);">
-									</div>
-									<div class="text_box">
-										<h3 class="talent_title">실무에 진짜 필요한 엑셀 노하우</h3>
-										<div class="talent_info">
-											<span class="user"><em>10,515명</em>이 찜했습니다!</span> <span
-												class="average">4.9(568)</span>
-										</div>
-									</div>
-							</a> <!-- <p class="earlybird">얼리버드 마감임박!</p> --></li>
-							<li><a href="/Talent/Detail/40880">
-									<div class="thumb lazyloaded"
-										data-bg="//img.taling.me/Content/Uploads/Images/941d3e2967a1ac6840458355beb909cfd2282113.png"
-										style="background-image: url(&quot;//img.taling.me/Content/Uploads/Images/941d3e2967a1ac6840458355beb909cfd2282113.png&quot;);">
-									</div>
-									<div class="text_box">
-										<h3 class="talent_title">투깝스 보컬의 정석 숨만 잘 쉬어도 고음 완성</h3>
-										<div class="talent_info">
-											<span class="user"><em>838명</em>이 찜했습니다!</span> <span
-												class="average">5(82)</span>
-										</div>
-									</div>
-							</a> <!-- <p class="earlybird">얼리버드 마감임박!</p> --></li>
-							<li><a href="/Talent/Detail/42555">
-									<div class="thumb lazyloaded"
-										data-bg="//img.taling.me/Content/Uploads/Images/20d71f73087f7040b3429db9864cdf1164bbac1e.png"
-										style="background-image: url(&quot;//img.taling.me/Content/Uploads/Images/20d71f73087f7040b3429db9864cdf1164bbac1e.png&quot;);">
-									</div>
-									<div class="text_box">
-										<h3 class="talent_title">150만원으로 30억을 만들어낸 비트코인 차트 분석의 기술</h3>
-										<div class="talent_info">
-											<span class="user"><em>605명</em>이 찜했습니다!</span> <span
-												class="average">4.9(46)</span>
-										</div>
-									</div>
-							</a> <!-- <p class="earlybird">얼리버드 마감임박!</p> --></li>
-							<li><a href="/Talent/Detail/29848">
-									<div class="thumb lazyloaded"
-										data-bg="//img.taling.me/Content/Uploads/Cover/s_174f25e8ef11cf06cfa4f5cb699b1e2659e52292.jpeg"
-										style="background-image: url(&quot;//img.taling.me/Content/Uploads/Cover/s_174f25e8ef11cf06cfa4f5cb699b1e2659e52292.jpeg&quot;);">
-									</div>
-									<div class="text_box">
-										<h3 class="talent_title">21년 최고매출, 22년 최다판매 친절한 쁨선생 케이팝</h3>
-										<div class="talent_info">
-											<span class="user"><em>2,703명</em>이 찜했습니다!</span> <span
-												class="average">5(253)</span>
-										</div>
-									</div>
-							</a> <!-- <p class="earlybird">얼리버드 마감임박!</p> --></li>
-
 						</ul>
 					</div>
 					<!-- // ad_vod -->
 					<!-- ad_app -->
 					<div class="ad_app">
 						<h2 class="logo">
-							<img
-								src="../images/favicon.png"
-								alt="하루">
+							<img src="../images/favicon.png" alt="하루">
 						</h2>
 						<h3>언제 어디서나 하루하기!</h3>
 						<a href="//play.google.com/store/apps/details?id=com.taling"
@@ -581,6 +536,73 @@
 					})
 				}
 
+			}
+		})
+		new Vue({
+			el : '.ad_vod',
+			data : {
+				now_pop_list : []
+			},
+			mounted : function() {
+				let _this = this;
+				axios.get("http://localhost/web/main/nowPopular_vue.do").then(
+						function(response) {
+							console.log(response.data)
+							_this.now_pop_list = response.data
+						})
+
+			}
+		})
+		new Vue({
+			el:'.pop_dance',
+			data:{
+				pop_dance:[]
+			},
+			mounted:function(){
+				let _this=this;
+				axios.get("http://localhost/web/main/popularDance_vue.do").then(function(response){
+					console.log(response.data)
+					_this.pop_dance=response.data
+				})
+			}
+		})
+		new Vue({
+			el:'.pop_get_job',
+			data:{
+				pop_get_job:[]
+			},
+			mounted:function(){
+				let _this=this;
+				axios.get("http://localhost/web/main/popular_get_job_vue.do").then(function(response){
+					console.log(response.data)
+					_this.pop_get_job=response.data
+				})
+			}
+		})
+		new Vue({
+			el:'.pop_fit',
+			data:{
+				pop_fit:[]
+			},
+			mounted:function(){
+				let _this=this;
+				axios.get("http://localhost/web/main/popular_fit_vue.do").then(function(response){
+					console.log(response.data)
+					_this.pop_fit=response.data
+				})
+			}
+		})
+		new Vue({
+			el:'.pop_fortune',
+			data:{
+				pop_fortune:[]
+			},
+			mounted:function(){
+				let _this=this;
+				axios.get("http://localhost/web/main/popular_fortune_vue.do").then(function(response){
+					console.log(response.data)
+					_this.pop_fortune=response.data
+				})
 			}
 		})
 	</script>
