@@ -5,6 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.cont_login .btn_submit {
+    width: 100%;
+    height: 48px;
+    border-radius: 2px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+    background-color: #45c5c5;
+}
+</style>
 </head>
 <body>
 <!-- login_main -->
@@ -20,21 +31,16 @@
 				</div>                    
 				<div class="line_inp line_pw">
 					<input type="password" name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요" v-model="pwd" ref="pwd">
-<!-- 					<p class="info_error"  id="passError1">비밀번호를 입력해주세요.</p> -->
-<!-- 					<p class="info_error"  id="passError2">이메일 또는 비밀번호를 확인해주세요.</p> -->
-<!-- 						<p v-model="message">{{message}}</p> -->
+
 				</div>  
 				<p class="info_error" v-model="message">{{message}}</p>                  
 			</div>                
 			<div class="box_btn">
-<!-- 				<button class="btn_submit" type="submit">로그인 하기</button> -->
 				<input type="button" value="로그인 하기" class="btn_submit" v-on:click="login()">
 				<a class="btn" href="#">비밀번호 찾기</a>
 				<a class="btn" href="../member/loginjoin.do">회원가입</a>
 			</div>                
 		</div>       
-<!-- 		<input type="hidden" name="redirectUrl" id="redirectUrl" value="../main/main.do"> -->
-<!-- 		</form> -->
 	</section>
 	<!-- //login_main -->        
 <script>

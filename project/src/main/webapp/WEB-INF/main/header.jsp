@@ -17,11 +17,7 @@
 				<a href="../main/main.do"><span class="blind">클래스하루</span></a>
 			</h1>
 			<!-- // logo -->
-			<!-- gnb -->
-			<div class="gnb">
-				<a href="../main/main.do" class="act">홈HOME</a>
-			</div>
-			<!-- // gnb -->
+
 			<!-- search_area -->
 			<div class="search_area">
 				<form class="" action="#" name="search">
@@ -40,27 +36,39 @@
 			<!-- nav_gnb -->
 			<nav class="nav_gnb">
 				<ul>
-					<li><a href="../class/class_detail.do?cno=179">튜터등록</a></li>
+<!-- 					<li><a href="../class/class_detail.do?cno=179">튜터등록</a></li> -->
 					<li><a href="../board/board_main.do">커뮤니티</a></li>
 					<c:if test="${sessionScope.mvo.id!=null }">
-						<li class="depth"><a onclick="qPop(0)">메시지</a></li>
-						<li><a href="#">수업신청서</a></li>
+<!-- 						<li class="depth"><a onclick="qPop(0)">메시지</a></li> -->
+<!-- 						<li><a href="#">수업신청서</a></li> -->
+					  <c:if test="${sessionScope.mvo.admin=='n' }">
 						<li class="depth">
-							<p role="button" class="depth1">수강목록</p>
+							<p role="button" class="depth1">마이페이지</p>
 							<ul class="lnb">
-								<li><a href="#">VOD 수강목록</a></li>
-								<li><a href="#">VOD Q&amp;A</a></li>
-								<li><a href="#">도서/준비물 배송정보</a></li>
+								<li><a href="../mypage/main.do">마이페이지</a></li>
+								<li><a href="../faq/insert.do">Q&amp;A 등록</a></li>
+								<li><a href="../mypage/profileUpdate.do">내 정보</a></li>
 							</ul>
 						</li>
-						<li><a href="#">찜</a></li>
+					  </c:if>
+					  <c:if test="${sessionScope.mvo.admin=='y' }">
+						<li class="depth">
+							<p role="button" class="depth1">관리자페이지</p>
+							<ul class="lnb">
+								<li><a href="../adminpage/main.do">관리자페이지</a></li>
+							</ul>
+						</li>
+					  </c:if>
+<!-- 						<li><a href="#">찜</a></li> -->
 						<li class="depth mypage">
 							<p role="button" class="depth1">
 								<img class="profile" src="#" onerror="profileImgError(this,);"
 									alt="프로필 이미지">
 							</p>
 							<ul class="lnb">
-								<li><a href="#">내 프로필</a></li>
+					  		<c:if test="${sessionScope.mvo.admin=='n' }">
+								<li><a href="../mypage/main.do">내 프로필</a></li>
+							</c:if>
 <!-- 								<li><a href="javascript:void(0)" id="btn-menu-logout">로그아웃</a></li> -->
 								<li><a href="../member/logout.do" id="btn-menu-logout">로그아웃</a></li>
 							</ul>

@@ -42,14 +42,19 @@ public interface ClassMapper {
 			+ "WHERE cateno=#{cateno}")
 	public List<CategoryDetailVO> classCateDetailData(int cateno);
 	
-	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,num "
-			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum as num "
-			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
-			+ "FROM ch_classdetail_2_3 where cateno=#{cateno} and detail_cateno=#{detail_cateno})) "
-			+ "WHERE num between #{start} and #{end}")
+	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,"
+			+ "(SELECT catename FROM ch_category_2_3 WHERE cateno=#{cateno}) as catename,"
+			+ "(SELECT detail_catename FROM ch_category_detail_2_3 WHERE detail_cateno=#{detail_cateno}) as detail_catename,num "
+			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,"
+			+ "(SELECT catename FROM ch_category_2_3 WHERE cateno=#{cateno}),"
+			+ "(SELECT detail_catename FROM ch_category_detail_2_3 WHERE detail_cateno=#{detail_cateno}),rownum as num "
+			+ "FROM ch_classdetail_2_3 "
+			+ "WHERE cateno=#{cateno} AND detail_cateno=#{detail_cateno} "
+			+ "ORDER BY cno) "
+			+ "WHERE num BETWEEN #{start} and #{end}")
 	public List<ClassDetailVO> classListData(Map map);
 	
-	@Select("SELECT cno,title,image,place,location,schedule,notice,time,perprice,totalprice, "
+	@Select("SELECT cno,title,image,place,location,schedule,notice,time,perprice,totalprice,tutor_info_grade_total, "
 	         + "summary,target,tutor_intro,class_intro,class_curri,class_video,onoff,inwon,tutor_info_nickname,tutor_info_img, "
 	         + "jjim_count FROM CH_CLASSDETAIL_2_3 "
 	         + "WHERE cno=#{cno}")
@@ -62,8 +67,8 @@ public interface ClassMapper {
 //			+"WHERE cno=#{cno}")
 //	public List<ReviewVO> classReview(int cno);
 
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_classdetail_2_3")
-	public int classTotalPage();
+	@Select("SELECT CEIL(COUNT(*)/16.0) FROM ch_classdetail_2_3 WHERE cateno=#{cateno} AND detail_cateno=#{detail_cateno}")
+	public int classTotalPage(Map map);
 	
 	@Select("SELECT COUNT(*) FROM ch_classdetail_2_3 "
 			+ "WHERE cateno=#{cateno} AND detail_cateno=#{detail_cateno}") 
@@ -78,6 +83,28 @@ public interface ClassMapper {
 		  +"WHERE num BETWEEN #{start} AND #{end}")
    public List<FoodVO> foodLocationFindData(Map map);*/
 	
+//	//검색
+//	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum"
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+ "FROM ch_classdetail_2_3 where title LIKE '%'||#{find}||'%' "
+//			+ "WHERE rownum between #{start} and #{end}")
+//	public List<ClassDetailVO> classFindList(Map map);
+//	
+//	//검색결과 총개수
+//	@Select("SELECT COUNT(*) FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+"FROM ch_classdetail_2_3) "
+//			+"WHERE title LIKE '%'||#{find}||'%'")
+//	public int classFindCount();
+//	
+//	//검색결과 총페이지
+//	@Select("SELECT CEIL(count(*)/16.0) FROM ch_classdetail_2_3 "
+//			+"WHERE title LIKE '%'||#{find}||'%'")
+//	public int classFindTotalPage(String find);
+	
 
+//	@Select("SELECT rno,content,heart,comment_count,curriculum,preparation,kindness,delivery,time,id,cno,TO_CHAR(regdate,'YYYY-MM-DD') as dbday "
+//			+"FROM (SELECT /*+(ch_review_2_3 ch_rv_rno_pk_2_3)*/rno,content,heart,comment_count,curriculum,preparation,kindness,delivery,time,id,cno,regdate "
+//			+"FROM ch_review_2_3) "
+//			+"WHERE cno=#{cno}")
+//	public List<ReviewVO> classReview(int cno);
 }
-

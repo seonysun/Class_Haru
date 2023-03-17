@@ -4,21 +4,37 @@ import com.sist.vo.*;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 public interface AdminMapper {
+	//FAQ 목록
+	@Select("SELECT no,cate_no,subject,content,ano,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,name,hit,pwd,num "
+			+ "FROM (SELECT no,cate_no,subject,content,ano,regdate,name,hit,pwd,rownum as num "
+			+ "FROM (SELECT no,cate_no,subject,content,ano,regdate,name,hit,pwd,rownum "
+			+ "FROM ch_faq_2_3 "
+			+ "ORDER BY ano)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<FAQVO> faqList(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_faq_2_3")
+	public int faqTotalPage();
+	
 	//공지 목록
 	@Select("SELECT bno,btype,id,title,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,tag,num "
 			+ "FROM (SELECT bno,btype,id,title,regdate,hit,tag,rownum as num "
 			+ "FROM (SELECT bno,btype,id,title,regdate,hit,tag "
 			+ "FROM ch_board_2_3 "
-			+ "WHERE btype=1 "
+			+ "WHERE btype=3 "
 			+ "ORDER BY bno)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<BoardVO> noticeList(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_board_2_3")
+	@Select("SELECT CEIL(COUNT(*)/10.0) "
+			+ "FROM ch_board_2_3 "
+			+ "WHERE btype=3")
 	public int noticeTotalPage();
 
 	//강의 승인
@@ -31,7 +47,7 @@ public interface AdminMapper {
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<ClassDetailVO> classList(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_classdetail_2_3 "
+	@Select("SELECT CEIL(COUNT(*)/4.0) FROM ch_classdetail_2_3 "
 			+ "WHERE ok='n'")
 	public int classTotalPage();
 	
@@ -49,7 +65,7 @@ public interface AdminMapper {
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<MemberVO> memberList(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_member_2_3 "
+	@Select("SELECT CEIL(COUNT(*)/8.0) FROM ch_member_2_3 "
 			+ "WHERE admin='n'")
 	public int memberTotalPage();
 	
@@ -80,20 +96,57 @@ public interface AdminMapper {
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<MemberVO> tutorList(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/10.0) FROM ch_member_2_3 "
+	@Select("SELECT CEIL(COUNT(*)/4.0) FROM ch_member_2_3 "
 			+ "WHERE admin='n' AND tutor='y'")
 	public int tutorTotalPage();
+	
+	@Select("SELECT cno,title,image,place,location,schedule,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+			+ "FROM ch_classdetail_2_3 "
+			+ "WHERE tno=(SELECT tno FROM ch_tutor_2_3 WHERE id=#{id}) "
+			+ "ORDER BY cno")
+	public List<ClassDetailVO> tutorClassList(String id);
+	
+	@Select("SELECT COUNT(*) FROM ch_classdetail_2_3 "
+			+ "WHERE tno=(SELECT tno FROM ch_tutor_2_3 WHERE id=#{id})")
+	public int tutorClassCount(String id);
 	
 	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,num "
 			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum as num "
 			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
 			+ "FROM ch_classdetail_2_3 "
-			+ "WHERE tno=(SELECT tno FROM ch_tutor_2_3 WHERE id=#{id}) "
 			+ "ORDER BY cno)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
-	public List<ClassDetailVO> tutorClassList(Map map);
-	
-	@Select("SELECT COUNT(*) FROM ch_classdetail_2_3 "
-			+ "WHERE tno=(SELECT tno FROM ch_tutor_2_3 WHERE id=#{id})")
-	public int tutorClassCount();
+	public List<ClassDetailVO> tutornullClassList(Map map);
+
+//	@Results({
+//		@Result(property = "tvo.tno", column = "tno"),
+//		@Result(property = "tvo.id", column = "id")
+//	})
+//	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,num "
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum as num "
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+ "FROM ch_classdetail_2_3 cd, ch_tutor_2_3 ct "
+//			+ "WHERE cd.tno=ct.tno AND ct.id=#{id} "
+//			+ "ORDER BY cno)) "
+//			+ "WHERE num BETWEEN #{start} AND #{end}")
+//	public List<ClassDetailVO> tutorClassList(Map map);
+
+//	@Results({
+//		@Result(property = "tvo.tno", column = "tno"),
+//		@Result(property = "tvo.id", column = "id")
+//	})
+//	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+ "FROM ch_classdetail_2_3 cd, ch_tutor_2_3 ct "
+//			+ "WHERE cd.tno=ct.tno AND ct.id=#{id} "
+//			+ "ORDER BY cno")
+//	public List<ClassDetailVO> tutorClassList(String id);
+
+//	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,num "
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum as num "
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+ "FROM ch_classdetail_2_3 "
+//			+ "WHERE tno=(SELECT tno FROM ch_tutor_2_3 WHERE id=#{id}) "
+//			+ "ORDER BY cno)) "
+//			+ "WHERE num BETWEEN #{start} AND #{end}")
+//	public List<ClassDetailVO> classList(Map map);
 }

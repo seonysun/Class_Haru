@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ReviewVO {
-	private int rno,heart,comment_count,curriculum,preparation,kindness,delivery,time,cno;
-	private String content,id;
+	private int rno,cno;
+	private String content,id,dbday;
 	private Date regdate;
 }
