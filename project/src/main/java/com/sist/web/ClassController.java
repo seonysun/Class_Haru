@@ -17,7 +17,8 @@ import com.sist.dao.*;
 public class ClassController {
    @Autowired
    private ClassService service;
-
+   @Autowired
+   private ReviewDAO dao;
    @GetMapping("class/class_list.do")
    public String class_list(int cateno,int detail_cateno,Model model)
    {
@@ -55,6 +56,8 @@ public class ClassController {
    @GetMapping("class/class_detail.do")
    public String class_detail(int cno,Model model)
    {
+	  List<ReviewVO> rList=dao.reviewListData(cno);
+	  model.addAttribute("rList",rList);
       model.addAttribute("cno",cno);
       return "class/class_detail";
    }

@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class ReserveVO {
 	private int crno,cno,inwon,totalperprice_num,score;
-	private String image,title,tutor,id,totalperprice,totalprice,ok,sche_info,tutorMsg,schedule,place,location;
+	private String image,title,tutor,id,totalperprice,totalprice,ok,sche_info,tutorMsg,schedule,place,location,dbday;
 	private Date regdate;
+	private ClassDetailVO dvo=new ClassDetailVO();
 }

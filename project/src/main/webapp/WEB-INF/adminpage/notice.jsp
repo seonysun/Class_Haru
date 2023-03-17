@@ -13,7 +13,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <link rel="stylesheet" href="../Content/app3/css/mypage.css">
-
 </head>
 <body>
 <div class="container">
@@ -23,33 +22,38 @@
 		<jsp:include page="../adminpage/menu.jsp"></jsp:include>
 	</div>
 	
-	<div style="width:80%;float:left;padding-left:20px">
+	<div style="width:80%;float:left;padding-left:20px;margin-top:-25px">
 	  <div class=rows>
-	  	<p style="height: 25px;margin-top: -25px;font-size: initial;text-align: right">
-			<strong style="color: #45c5c5">승인 대기</strong> 클래스<br>
-			<input type=hidden size=15 class=input-sm ref="sid" value="${sessionScope.mvo.id }">
-		</p>
-		<div style="height: 570px">
-			<div class="class-box" v-for="vo in class_list">
-				<div class="class-info " style="position: relative;padding-top:10px;padding-bottom:10px">
-					<a :href="'../class/class_detail.do?cno='+vo.cno">
-						<img class="image" style="width:200px;height:120px" :src="vo.image">
-					</a>
-					<div class="information-box">
-						<h3><a :href="'../class/class_detail.do?cno='+vo.cno">{{vo.title}}</a></h3>
-						<div class="stars-box">
-							<font class="class-type">원데이 수업&nbsp;&nbsp;|&nbsp;&nbsp;{{vo.tutor_info_nickname}}</font>
-						</div>
-						<div class="start-date">
-							<font>수업 장소 : {{vo.location}}</font>
-						</div>
-                        <div class="price">
-                        	<font>￦</font>{{vo.perprice}}원<span class="hour_unit">/ 시간</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                        	<span class="mintBtn presspoint" v-on:click="classcon(vo.cno)">승인</span>
-                        </div>
-					</div>
-				</div>
-			</div>
+		<div class="mintBtn_m" style="float: right">
+			<a href="../board/board_insert.do?btype=3" style="padding: 0px">공지 등록</a>
+		</div>
+		<div style="display: inline-block;height: 30px"></div>
+		<div style="display: inline-block;height: 430px">
+			<table class="table" style="table-layout: fixed;">
+				<tr>
+					<th width="15%" class="text-center">번호</th>
+					<th width="45%" class="text-center">제목</th>
+					<th width="15%" class="text-center">작성일</th>
+					<th width="10%" class="text-center">조회수</th>
+					<th width="15%" class="text-center">수정 / 삭제</th>
+				</tr>
+				<tr style="vertical-align: middle;" v-for="vo in notice_list">
+					<td width="10%" class="text-center origin">{{vo.bno}}</td>
+					<td width="45%" class="text-center origin"><a :href="'../board/board_detail.do?bno='+vo.bno">{{vo.title}}</a></td>
+					<td width="15%" class="text-center origin">{{vo.dbday}}</td>
+					<td width="10%" class="text-center origin">{{vo.hit}}</td>
+					<td width="15%" class="text-center origin">
+						<span class="presspoint">
+							<a :href="'../board/board_update.do?bno='+vo.bno">
+								<img src="../images/up3.png" style="height: 18px;margin: 2px 10px;">
+							</a>
+						</span>
+						<span class="presspoint" v-on:click="boardDelete(vo.bno)">
+							<img src="../images/del.png" style="height: 15px;margin: 4px 10px;">
+						</span>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<div style="height: 10px"></div>
 			<div class="text-center" v-if="totalpage>0">
@@ -65,9 +69,11 @@
 	new Vue({
 		el:'.container',
 		data:{
-			class_list:[],
+			notice_list:[],
 			curpage:1,
-			totalpage:0
+			totalpage:0,
+			startpage:0,
+			endpage:0
 		},
 		mounted:function(){
 			this.send()
@@ -75,15 +81,17 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/class_list_vue.do",{
+				axios.get("http://localhost/web/adminpage/notice_list_vue.do",{
 					params:{
 						page:this.curpage
 					}
 				}).then(function(response){
 					console.log(response.data)
-					_this.class_list=response.data
+					_this.notice_list=response.data
 					_this.curpage=response.data[0].curpage
 					_this.totalpage=response.data[0].totalpage
+					_this.startpage=response.data[0].startpage
+					_this.endpage=response.data[0].endpage
 				})
 			},
 			prev:function(){
@@ -94,14 +102,14 @@
 		        this.curpage=this.curpage<this.totalpage?this.curpage+1:this.curpage
 		        this.send()               
 		    },
-			classcon:function(cno){
-				if(confirm('선택한 수업을 메인에 노출하시겠습니까?\n클릭 즉시 강의 리스트가 업데이트됩니다')){
-					axios.get("http://localhost/web/adminpage/class_ok_vue.do",{
+			boardDelete:function(bno){
+				if(confirm('정말로 삭제하시겠습니까?\n삭제된 항목은 복구되지 않습니다')){
+					axios.get('http://localhost/web/board/board_delete_vue.do',{
 						params:{
-							cno:cno
+							bno:bno
 						}
 					}).then(function(response){
-						location.href="../adminpage/class.do"
+						location.href="../adminpage/notice.do"
 					})
 				}
 			}

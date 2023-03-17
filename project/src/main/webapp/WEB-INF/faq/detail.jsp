@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,8 +45,10 @@
             </div>
             <div class="bt_wrap">
                 <a href="../faq/list.do" class="on">목록</a>
+                <c:if test="${sessionScope.mvo.admin=='y' }">
                 <a :href="'../faq/update.do?ano='+faq_detail.ano">수정</a>
                 <a :href="'../faq/delete.do?ano='+faq_detail.ano">삭제</a>
+                </c:if>
             </div>
         </div>
     </div>

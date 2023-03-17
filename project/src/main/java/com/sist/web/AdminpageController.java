@@ -10,24 +10,24 @@ public class AdminpageController {
 	public String adminpage_main() {
 		return "adminpage/main";
 	}
-//	@GetMapping("adminpage/main.do")
-//	public String adminpage_main(Model model) {
-//		model.addAttribute("admin_jsp", "../adminpage/home.jsp");
-//		return "adminpage/main";
-//	}
+	
+	@GetMapping("adminpage/notice.do")
+	public String adminpage_notice() {
+		return "adminpage/notice";
+	}
 	
 	@GetMapping("adminpage/class.do")
 	public String adminpage_class() {
 		return "adminpage/class";
 	}
 	
-	@GetMapping("adminpage/tutor.do")
-	public String adminpage_tutor() {
-		return "adminpage/tutor";
-	}
-	
 	@GetMapping("adminpage/member.do")
 	public String adminpage_member() {
 		return "adminpage/member";
+	}
+	
+	@GetMapping("adminpage/tutor.do")
+	public String adminpage_tutor() {
+		return "adminpage/tutor";
 	}
 }

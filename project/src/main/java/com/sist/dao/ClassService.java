@@ -15,11 +15,6 @@ public class ClassService {
 	@Autowired
 	private ClassMapper cmapper;
 	
-
-	@Autowired
-	private JjimMapper jMapper;
-	
-
 //	@Select("SELECT cateno,catename FROM ch_category_2_3")
 	public List<CategoryVO> classCateData(){
 		return cmapper.classCateData();
@@ -70,9 +65,9 @@ public class ClassService {
 
 	
 	// @Select("SELECT CEIL(COUNT(*)/20 FROM ch_classdetail_2_3")
-	public int classTotalPage()
+	public int classTotalPage(Map map)
 	{
-		return cmapper.classTotalPage();
+		return cmapper.classTotalPage(map);
 	}
 	
 	//@Select("SELECT COUNT(*) FROM ch_classdetail_2_3") 
@@ -80,7 +75,28 @@ public class ClassService {
 	{
 		return cmapper.classRowCount(map);
 	}
+	/*//검색
+//	@Select("SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname,rownum"
+//			+ "FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+ "FROM ch_classdetail_2_3 where title LIKE '%'||#{find}||'%' "
+//			+ "WHERE rownum between #{start} and #{end}")*/
+//	public List<ClassDetailVO> classFindList(Map map)
+//	{
+//		return cmapper.classFindList(map);
+//	}
+//	
+//	//검색결과 총개수
+//	/*@Select("SELECT COUNT(*) FROM (SELECT cno,title,image,location,perprice,jjim_count,cateno,detail_cateno,onoff,tutor_info_nickname "
+//			+"FROM ch_classdetail_2_3) "
+//			+"WHERE title LIKE '%'||#{find}||'%'")*/
+//	public int classFindCount()
+//	{
+//		return cmapper.classFindCount();
+//	}
 	
+	//검색결과 총페이지
+//	@Select("SELECT CEIL(count(*)/16.0) FROM ch_classdetail_2_3 "
+//			+"WHERE title LIKE '%'||#{find}||'%'")
+//	public int classFindTotalPage(String find);
+
 }
-
-

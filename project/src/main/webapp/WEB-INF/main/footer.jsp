@@ -45,22 +45,23 @@
                <li class="depth1 taling_cs">
                   <p class="tit">HARU CENTER</p>
                   <ul class="depth2">
-                     <li class="cs" id="custom-button-trigger"
-                        style="color: #ff005a; cursor: pointer;"><a href="../chat/chat.do">하루에게 문의하기</a></li>
+                     <li
+                        style="color: #45c5c5; cursor: pointer;font-weight: bold"><a href="../chat/chat.do">
+                        <img src="../images/chatbubble.png" style="height: 35px;margin-top: -7px">
+                        하루에게 문의하기</a></li>
                      <li>
                         <p>운영시간</p>
                         <p>평일 10:00 ~ 17:00 점심 13:00 ~14:00</p>
                      </li>
                   </ul>
                </li>
-               <li class="depth1 taling_biz">
-                  <p class="tit">확인용임시</p>
-                  <ul class="depth2">
-                     <li><a href="../mypage/main.do">마이페이지</a></li>
-                     <li><a href="../adminpage/main.do">관리자페이지</a></li>
-                     <li><a href="../tutorpage/main.do">튜터페이지</a></li>
-                  </ul>
-               </li>
+<!--                <li class="depth1 taling_biz"> -->
+<!--                   <p class="tit">확인용임시</p> -->
+<!--                   <ul class="depth2"> -->
+<!--                      <li><a href="../mypage/main.do">마이페이지</a></li> -->
+<!--                      <li><a href="../adminpage/main.do">관리자페이지</a></li> -->
+<!--                   </ul> -->
+<!--                </li> -->
             </ul>
          </div>
          <div id="custom-button-1"></div>

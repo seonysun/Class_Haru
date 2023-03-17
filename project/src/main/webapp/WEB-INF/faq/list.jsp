@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,10 +40,12 @@
                 <a v-on:click="pageClick(i)" class="num" v-else>{{i}}</a>
                 <a v-on:click="next()" class="bt next" v-if="endPage<totalpage">></a>
             </div>
+            <c:if test="${sessionScope.mvo.admin=='y' }">
             <div class="bt_wrap">
                 <a href="../faq/insert.do" class="on">등록</a>
                 <!--<a href="#">수정</a>-->
             </div>
+            </c:if>
         </div>
     </div>
     <script>
