@@ -80,7 +80,7 @@
 							<img src="../images/del.png" style="height: 15px;margin: 4px 10px;">
 						</span>
 					</td>
-				</tr>
+				</tr> 
 			</table>
 		</div>
 		<div style="height: 10px"></div>
