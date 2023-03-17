@@ -167,6 +167,10 @@ public interface MypageMapper {
 			+ "WHERE id=#{id}")
 	public int replyTotalPage(Map map);
 	
+	@Delete("DELETE FROM ch_boardreply_2_3 "
+			+ "WHERE brno=#{brno}")
+	public void replyDelete(int brno);
+	
 	//강의 신청
 	@Insert("INSERT INTO ch_classdetail_2_3 "
 			+ "VALUES(ch_cd_cno_seq_2_3.nextval,#{title},#{image},#{place},#{location},#{schedule},#{notice},#{time},#{perPrice},#{totalprice},#{jjim_count},#{cateno},#{tno},"

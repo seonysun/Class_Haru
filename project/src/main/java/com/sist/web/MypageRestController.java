@@ -302,4 +302,10 @@ public class MypageRestController {
 		}
 		return arr.toJSONString();
 	}
+	
+	@GetMapping("mypage/reply_delete_vue.do")
+	public String reply_delete_vue(int brno) {
+		dao.replyDelete(brno);
+		return "";
+	}
 }

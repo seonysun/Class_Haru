@@ -97,4 +97,7 @@ public class MypageDAO {
 	public int replyTotalPage(Map map) {
 		return mapper.replyTotalPage(map);
 	}
+	public void replyDelete(int brno) {
+		mapper.replyDelete(brno);
+	}
 }
