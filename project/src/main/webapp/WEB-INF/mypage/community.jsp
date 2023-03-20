@@ -84,7 +84,7 @@
 			send:function(){
 				this.sessionId=this.$refs.id.value
 				let _this=this
-				axios.get("http://localhost/web/mypage/commu_list_vue.do",{
+				axios.get("../mypage/commu_list_vue.do",{
 					params:{
 						page:this.curpage,
 						id:this.sessionId
@@ -106,7 +106,7 @@
 		    },
 			boardDelete:function(bno){
 				if(confirm('정말로 삭제하시겠습니까?\n삭제된 항목은 복구되지 않습니다')){
-					axios.get('http://localhost/web/board/board_delete_vue.do',{
+					axios.get('../board/board_delete_vue.do',{
 						params:{
 							bno:bno
 						}

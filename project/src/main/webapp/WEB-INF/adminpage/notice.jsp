@@ -81,7 +81,7 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/notice_list_vue.do",{
+				axios.get("../adminpage/notice_list_vue.do",{
 					params:{
 						page:this.curpage
 					}
@@ -104,7 +104,7 @@
 		    },
 			boardDelete:function(bno){
 				if(confirm('정말로 삭제하시겠습니까?\n삭제된 항목은 복구되지 않습니다')){
-					axios.get('http://localhost/web/board/board_delete_vue.do',{
+					axios.get('../board/board_delete_vue.do',{
 						params:{
 							bno:bno
 						}

@@ -61,7 +61,7 @@
      },
      mounted:function(){
         let _this=this
-        axios.get("http://localhost/web/faq/detail_vue.do",{
+        axios.get("../faq/detail_vue.do",{
            params:{
               ano:this.ano
            }

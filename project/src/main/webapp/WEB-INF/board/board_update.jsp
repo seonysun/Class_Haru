@@ -138,7 +138,7 @@ $(function(){
       },
       mounted:function(){ 
          let _this=this
-         axios.get('http://localhost/web/board/board_update_vue.do',{
+         axios.get('../board/board_update_vue.do',{
             params:{
                bno:this.bno
             }
@@ -152,7 +152,7 @@ $(function(){
       methods:{
          update:function(){
             let _this=this
-            axios.get('http://localhost/web/board/board_update_ok_vue.do',{
+            axios.get('../board/board_update_ok_vue.do',{
                params:{
                   bno:this.bno,
                   title:this.title,

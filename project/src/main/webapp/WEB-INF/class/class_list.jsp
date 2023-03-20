@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
        methods:{
            pageChange:function(){
                   let _this=this;
-                  axios.get("http://localhost/web/class/class_list_vue.do",{
+                  axios.get("../class/class_list_vue.do",{
                      params:{
                        cateno:this.cateno,
                        detail_cateno:this.detail_cateno,
@@ -220,14 +220,14 @@ document.addEventListener('DOMContentLoaded', function() {
                },
                cate_name_list:function(){
             	   let _this=this;
-            	   axios.get("http://localhost/web/class/class_cate_vue.do").then(function(response){
+            	   axios.get("../class/class_cate_vue.do").then(function(response){
             		   console.log(response.data)
             		   _this.class_name=response.data
             	   })
                },
                detail_cate_name_list:function(cateno_forname){
             	   let _this=this;
-            	   axios.get("http://localhost/web/class/class_detail_cate_vue.do?cateno="+cateno_forname).then(function(response){
+            	   axios.get("../class/class_detail_cate_vue.do?cateno="+cateno_forname).then(function(response){
             		   console.log(response.data)
             		   _this.detail_class_name=response.data
             	   })

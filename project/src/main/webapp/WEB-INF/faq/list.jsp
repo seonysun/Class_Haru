@@ -83,7 +83,7 @@
      methods:{
         pageChange:function(){
            let _this=this;
-           axios.get("http://localhost/web/faq/list_vue.do",{
+           axios.get("../faq/list_vue.do",{
               params:{
                  page:this.curpage
               }

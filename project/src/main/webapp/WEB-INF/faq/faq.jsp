@@ -91,12 +91,12 @@
      },
      mounted:function(){
         let _this=this
-        axios.get('http://localhost/web/faq/tutee_list_vue.do'
+        axios.get('../faq/tutee_list_vue.do'
               ).then(function(response){
            console.log(response.data) 
            _this.tutee_list=response.data
         })
-        axios.get('http://localhost/web/faq/tutor_list_vue.do'
+        axios.get('../faq/tutor_list_vue.do'
               ).then(function(response){
            console.log(response.data) 
            _this.tutor_list=response.data

@@ -65,7 +65,7 @@
      methods:{
         write:function(){
            let _this=this;
-           axios.get('http://localhost/web/faq/insert_vue.do',{
+           axios.get('../faq/insert_vue.do',{
               params:{
                  name:this.name,
                  subject:this.subject,

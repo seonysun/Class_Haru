@@ -519,7 +519,7 @@
 			},
 			mounted : function() {
 				let _this = this;
-				axios.get("http://localhost/web/class/class_cate_vue.do").then(
+				axios.get("../class/class_cate_vue.do").then(
 						function(response) {
 							console.log(response.data)
 							_this.cate_list = response.data
@@ -529,7 +529,7 @@
 				onMouseOver : function(cateno) {
 					let _this = this;
 					axios.get(
-							"http://localhost/web/class/class_detail_cate_vue.do?cateno="
+							"../class/class_detail_cate_vue.do?cateno="
 									+ cateno).then(function(response) {
 						console.log(response.data)
 						_this.detail_cate_list = response.data
@@ -545,7 +545,7 @@
 			},
 			mounted : function() {
 				let _this = this;
-				axios.get("http://localhost/web/main/nowPopular_vue.do").then(
+				axios.get("../main/nowPopular_vue.do").then(
 						function(response) {
 							console.log(response.data)
 							_this.now_pop_list = response.data
@@ -560,7 +560,7 @@
 			},
 			mounted:function(){
 				let _this=this;
-				axios.get("http://localhost/web/main/popularDance_vue.do").then(function(response){
+				axios.get("../main/popularDance_vue.do").then(function(response){
 					console.log(response.data)
 					_this.pop_dance=response.data
 				})
@@ -573,7 +573,7 @@
 			},
 			mounted:function(){
 				let _this=this;
-				axios.get("http://localhost/web/main/popular_get_job_vue.do").then(function(response){
+				axios.get("../main/popular_get_job_vue.do").then(function(response){
 					console.log(response.data)
 					_this.pop_get_job=response.data
 				})
@@ -586,7 +586,7 @@
 			},
 			mounted:function(){
 				let _this=this;
-				axios.get("http://localhost/web/main/popular_fit_vue.do").then(function(response){
+				axios.get("../main/popular_fit_vue.do").then(function(response){
 					console.log(response.data)
 					_this.pop_fit=response.data
 				})
@@ -599,7 +599,7 @@
 			},
 			mounted:function(){
 				let _this=this;
-				axios.get("http://localhost/web/main/popular_fortune_vue.do").then(function(response){
+				axios.get("../main/popular_fortune_vue.do").then(function(response){
 					console.log(response.data)
 					_this.pop_fortune=response.data
 				})

@@ -124,7 +124,7 @@
 			eventBus.$on('showClassEvent', function(value){
 				_this.tutor_id=value
 				_this.isShow=true
-				axios.get('http://localhost/web/adminpage/tutor_class_vue.do',{
+				axios.get('../adminpage/tutor_class_vue.do',{
 					params:{
 						id:_this.tutor_id
 					}
@@ -137,7 +137,7 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/tutor_list_vue.do",{
+				axios.get("../adminpage/tutor_list_vue.do",{
 					params:{
 						page:this.curpage
 					}

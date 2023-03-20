@@ -192,7 +192,7 @@ $(function(){
      },
      mounted:function(){
         let _this=this
-        axios.get('http://localhost/web/reserve/reserve_vue.do',{
+        axios.get('../reserve/reserve_vue.do',{
            params:{
               cno:_this.cno
            }

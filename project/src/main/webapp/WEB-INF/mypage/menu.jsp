@@ -183,7 +183,7 @@
 		methods:{
 			textroom:function(tid, tnickname){
 				let _this=this
-				axios.get('http://localhost/web/mypage/stext_list_vue.do',{
+				axios.get('../mypage/stext_list_vue.do',{
 					params:{
 						id:tid
 					}
@@ -191,7 +191,7 @@
 					console.log(response.data)
 					_this.stext_list=response.data
 				})
-				axios.get('http://localhost/web/mypage/rtext_list_vue.do',{
+				axios.get('../mypage/rtext_list_vue.do',{
 					params:{
 						receiver:tnickname
 					}
@@ -204,7 +204,7 @@
 				let _this=this
 				this.id=this.$refs.id.value
 				this.nickname=this.$refs.nickname.value
-				axios.get('http://localhost/web/mypage/text_insert_vue.do',{
+				axios.get('../mypage/text_insert_vue.do',{
 					params:{
 						id:this.id,
 						msg:this.msg,
@@ -222,7 +222,7 @@
 			},
 			textdetail:function(tno){
 				let _this=this
-				axios.get('http://localhost/web/mypage/text_detail_vue.do',{
+				axios.get('../mypage/text_detail_vue.do',{
 					params:{
 						tno:tno
 					}
@@ -234,7 +234,7 @@
 			},
 			textdelete:function(tno){
 				let _this=this
-				axios.get('http://localhost/web/mypage/text_delete_vue.do',{
+				axios.get('../mypage/text_delete_vue.do',{
 					params:{
 						tno:tno
 					}

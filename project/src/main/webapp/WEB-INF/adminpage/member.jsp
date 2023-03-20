@@ -120,7 +120,7 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/member_list_vue.do",{
+				axios.get("../adminpage/member_list_vue.do",{
 					params:{
 						page:this.curpage
 					}
@@ -143,7 +143,7 @@
 				this.$refs['tutor_up'].show()
 				this.stu_id=stu
 				let _this=this
-				axios.get("http://localhost/web/adminpage/member_detail_vue.do",{
+				axios.get("../adminpage/member_detail_vue.do",{
 					params:{
 						id:stu
 					}
@@ -154,7 +154,7 @@
 			},
 			tutorok:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/tutor_ok_vue.do",{
+				axios.get("../adminpage/tutor_ok_vue.do",{
 					params:{
 						id:_this.stu_id
 					}
@@ -167,7 +167,7 @@
 			},
 			memberDelete:function(id){
 				if(confirm('정말로 탈퇴 처리 하시겠습니까?\n삭제 내역은 복구되지 않습니다')){
-					axios.get('http://localhost/web/adminpage/member_delete_vue.do',{
+					axios.get('../adminpage/member_delete_vue.do',{
 						params:{
 							id:id
 						}

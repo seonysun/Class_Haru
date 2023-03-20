@@ -158,7 +158,7 @@ $(function(){
       methods:{
          write:function(){
             let _this=this
-            axios.get('http://localhost/web/board/board_insert_vue.do',{
+            axios.get('../board/board_insert_vue.do',{
                params:{
                   //public String board_insert_vue(BoardVO vo)
                   btype:this.btype,

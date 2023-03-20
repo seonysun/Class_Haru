@@ -75,7 +75,7 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/class_list_vue.do",{
+				axios.get("../adminpage/class_list_vue.do",{
 					params:{
 						page:this.curpage
 					}
@@ -96,7 +96,7 @@
 		    },
 			classcon:function(cno){
 				if(confirm('선택한 수업을 메인에 노출하시겠습니까?\n클릭 즉시 강의 리스트가 업데이트됩니다')){
-					axios.get("http://localhost/web/adminpage/class_ok_vue.do",{
+					axios.get("../adminpage/class_ok_vue.do",{
 						params:{
 							cno:cno
 						}

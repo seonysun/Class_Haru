@@ -153,7 +153,7 @@ div div a.all_btn{
       },
       mounted:function(){
            let _this=this
-           axios.get('http://localhost/web/board/board_detail_vue.do',{
+           axios.get('../board/board_detail_vue.do',{
               params:{
                  bno:_this.bno
               }
@@ -165,7 +165,7 @@ div div a.all_btn{
       methods:{
          del:function(){
             let _this=this
-            axios.get('http://localhost/web/board/board_delete_vue.do',{
+            axios.get('../board/board_delete_vue.do',{
                params:{
                   bno:this.bno
                }

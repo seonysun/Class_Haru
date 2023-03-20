@@ -57,7 +57,7 @@ new Vue({
      },
      mounted:function(){
            let _this=this;
-           axios.get('http://localhost/web/faq/update_vue.do',{
+           axios.get('../faq/update_vue.do',{
               params:{
                 ano:this.ano
               }
@@ -70,7 +70,7 @@ new Vue({
      methods:{
         update:function(){
            let _this=this;
-           axios.get('http://localhost/web/faq/update_ok_vue.do',{
+           axios.get('../faq/update_ok_vue.do',{
               params:{
                 ano:this.ano,
                 name:this.name,

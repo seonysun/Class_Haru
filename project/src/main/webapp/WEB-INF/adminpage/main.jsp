@@ -84,7 +84,7 @@
 		methods:{
 			send:function(){
 				let _this=this
-				axios.get("http://localhost/web/adminpage/faq_list_vue.do",{
+				axios.get("../adminpage/faq_list_vue.do",{
 					params:{
 						page:this.curpage
 					}

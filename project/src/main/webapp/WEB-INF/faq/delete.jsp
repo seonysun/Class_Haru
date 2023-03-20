@@ -31,7 +31,7 @@
      methods:{
         del:function(){
           let _this=this
-          axios.get('http://localhost/web/faq/delete_vue.do',{
+          axios.get('../faq/delete_vue.do',{
              params:{
                 ano:this.ano,
                 pwd:this.pwd

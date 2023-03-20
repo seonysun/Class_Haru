@@ -117,7 +117,7 @@
 			send:function(){
 				this.sessionId=this.$refs.sid.value
 				let _this=this
-				axios.get('http://localhost/web/mypage/my_reserve_vue.do',{
+				axios.get('../mypage/my_reserve_vue.do',{
 					params:{
 						page:this.curpage,
 						id:this.sessionId
@@ -140,7 +140,7 @@
 		    }
 // 			reservedetail:function(cno){
 // 				let _this=this
-// 				axios.get('http://localhost/web/mypage/reserve_class_vue.do',{
+// 				axios.get('../mypage/reserve_class_vue.do',{
 // 					params:{
 // 						cno:cno
 // 					}

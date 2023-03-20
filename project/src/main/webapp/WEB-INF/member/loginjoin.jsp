@@ -83,7 +83,7 @@ new Vue({
 			}
 			this.idCheck();
 			let _this=this
-			axios.get('http://localhost/web/member/insert_vue.do',{
+			axios.get('../member/insert_vue.do',{
 				params:{
 					id:_this.id,
 					pwd:_this.pwd,
@@ -113,7 +113,7 @@ new Vue({
 				return
 		    }
 			let _this=this
-			axios.get('http://localhost/web/member/idcheck_vue.do',{
+			axios.get('../member/idcheck_vue.do',{
 				params:{
 					id:this.id
 				}

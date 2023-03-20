@@ -197,7 +197,7 @@ $(function(){
      mounted:function(){
         this.send()
         let _this=this
-        axios.get('http://localhost/web/board/board_main_vue.do',{
+        axios.get('../board/board_main_vue.do',{
            params:{
               page:_this.curpage,
               btype:_this.btype
@@ -218,7 +218,7 @@ $(function(){
         },
         send:function(){
            let _this=this
-           axios.get('http://localhost/web/board/board_main_vue.do',{
+           axios.get('../board/board_main_vue.do',{
               params:{
                  page:_this.curpage,
                  btype:_this.btype
@@ -234,7 +234,7 @@ $(function(){
          ,
         search:function(){
            let _this=this
-           axios.get('http://localhost/web/board/board_search_vue.do',{
+           axios.get('../board/board_search_vue.do',{
               params:{
                  btype:this.btype,
                  word:this.word

@@ -376,7 +376,7 @@
 		  },
 		  mounted:function(){
 			  let _this=this
-			  axios.get('http://localhost/web/class/class_detail_vue.do',{
+			  axios.get('../class/class_detail_vue.do',{
 				  params:{
 					  cno:_this.cno,
 					  schedule:_this.schedule

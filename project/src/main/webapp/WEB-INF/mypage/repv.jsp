@@ -112,7 +112,7 @@
 			send:function(){
 				this.sessionId=this.$refs.id.value
 				let _this=this
-				axios.get("http://localhost/web/mypage/review_list_vue.do",{
+				axios.get("../mypage/review_list_vue.do",{
 					params:{
 						page:this.curpage,
 						id:this.sessionId
@@ -123,7 +123,7 @@
 					_this.curpage=response.data[0].curpage
 					_this.totalpage=response.data[0].totalpage
 				})
-				axios.get("http://localhost/web/mypage/reply_list_vue.do",{
+				axios.get("../mypage/reply_list_vue.do",{
 					params:{
 						page:this.curpage,
 						id:this.sessionId
@@ -145,7 +145,7 @@
 		    },
 			reviewDelete:function(rno){
 				if(confirm('정말로 삭제하시겠습니까?\n삭제된 항목은 복구되지 않습니다')){
-					axios.get('http://localhost/web/mypage/review_delete_vue.do',{
+					axios.get('../mypage/review_delete_vue.do',{
 						params:{
 							rno:rno
 						}
@@ -156,7 +156,7 @@
 			},
 			replyDelete:function(brno){
 				if(confirm('정말로 삭제하시겠습니까?\n삭제된 항목은 복구되지 않습니다')){
-					axios.get('http://localhost/web/mypage/reply_delete_vue.do',{
+					axios.get('../mypage/reply_delete_vue.do',{
 						params:{
 							brno:brno
 						}
