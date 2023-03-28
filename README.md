@@ -1,4 +1,4 @@
-# Team3_2 Class_Haru
+# Team3_2 🙌 Class_Haru
 
 <hr>
 
